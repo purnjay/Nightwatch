@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
+    public ObjectiveSystem objsys;     //Reference to Objective System
 
     public Text interactInfo;
 
@@ -30,6 +31,11 @@ public class Interaction : MonoBehaviour
         }
         else {
             interactInfo.enabled = true;
+            if (Input.GetKeyDown(interact))
+            {
+                //Debug.Log("Obj Done");
+              //  objsys.CompletedObjective(); // Do Objective
+            }
         }
 
     }
@@ -43,10 +49,15 @@ public class Interaction : MonoBehaviour
             ItemWorld itemWorld = col.GetComponent<ItemWorld>();
             if (itemWorld != null)
             {
+                
                 inventory.AddItem(itemWorld.GetItem());
+             
                 itemWorld.DestroySelf();
+             
+
             }
             col.GetComponent<Collectable>().SaveKey();
+        //    objsys.CompletedObjective(); // Do Objective
             Destroy(col.gameObject);
         }
         else {
@@ -59,11 +70,12 @@ public class Interaction : MonoBehaviour
             ItemWorld itemWorld = col.GetComponent<ItemWorld>();
             if (itemWorld != null)
             {
+                
                 inventory.AddItem(itemWorld.GetItem());
                 itemWorld.DestroySelf();
             }
             col.GetComponent<Unlockable>().Activate();
-
+          //  objsys.CompletedObjective(); // Do Objective
         }
         else
         {
@@ -75,6 +87,7 @@ public class Interaction : MonoBehaviour
             interactable = true;
 
             if (Input.GetKeyDown(interact)) {
+             //   objsys.CompletedObjective(); // Do Objective
                 
                 FindObjectOfType<Gun>().AddAmmo();
             }
@@ -134,7 +147,8 @@ public class Interaction : MonoBehaviour
 
             if(Input.GetKeyDown(interact)) { 
             FindObjectOfType<Gun>().AddAmmo();
-            Destroy(col.gameObject);
+                objsys.CompletedObjective(); // Do Objective
+                Destroy(col.gameObject);
             }
         }
         else

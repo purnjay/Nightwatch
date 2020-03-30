@@ -3129,6 +3129,11 @@ PrefabInstance:
       propertyPath: interactInfo
       value: 
       objectReference: {fileID: 441871739}
+    - target: {fileID: 1326009671518097147, guid: 64117d1d0fc4693488bf5cc80181e67a,
+        type: 3}
+      propertyPath: objsys
+      value: 
+      objectReference: {fileID: 1966753578}
     - target: {fileID: 1326009671563556659, guid: 64117d1d0fc4693488bf5cc80181e67a,
         type: 3}
       propertyPath: m_Name
